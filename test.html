@@ -1,37 +1,62 @@
-<script src="//ssl.p.jwpcdn.com/player/v/8.21.0/jwplayer.js"></script>
-<script> jwplayer.key = 'XSuP4qMl+9tK17QNb+4+th2Pm9AWgMO/cYH8CI0HGGr7bdjo';
-</script>
-<div id="player"></div>
-<script>
+<!DOCTYPE html>
+<html lang="en">
 
-    var playerInstance = jwplayer("player");
 
-    playerInstance.setup({
+  
+<head>
+  <meta charset="UTF-8">
+  <title>YoSinTV MPD Player</title>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
+ <!-- https://yosintv2.github.io/tv/mpd.js -->
+  <style>
+    body {
+      margin: 0px;
+    }
 
-        playlist: [{
-            "title": "RimbaTV",
-            "sources": [
-                {
-                    "default": false,
-                    "type": "dash",
-                    "file": 'https://mag03.tvx.prd.tv.odido.nl/wh7f454c46tw75168188_-627298088/PLTV/86/224/3221241590/3221241590.mpd?zoneoffset=0&devkbps=1-7000&servicetype=1&icpid=86&accounttype=1&limitflux=-1&limitdur=-1&tenantId=3103&accountinfo=%7E%7EV2.0%7EqbcsJh_jU5C9BcZc959e_wae44b4867b3417aa76b5db2da20fe46c%7EKZzTWjB8qD1zdgbJjRPVLJX-tV0qiN9RBHC_iseGrsmTSRjj06oGDtGlpSCRGOwF3626cf085c08d024c7e4aafc18c32440%7EExtInfo5Ro3VppWiUusj2ippqUPkQ%3D%3D4a2d2c8ce133f43026d0e31b822b8474%3A20240601012829%3AUTC%2C10001003329222%2C87.212.140.171%2C20240601012829%2C3103_SP1S%2C10001003329222%2C-1%2C0%2C1%2C%2C%2C2%2C3103_Sport1%2C%2C%2C2%2C10000044444303%2C0%2C10000025050255%2CNDEzODg2NTY3MzEwMzI2NzMwNjMwNTY%3D%2C%2C%2C5%2C1%2CEND&GuardEncType=2&RTS=1717205309&from=11&hms_devid=1008&online=1717205309&mag_hms=1008,311,305&_=1717205322621',
-                    "drm": {
-                        "clearkey": { "keyId": "ef34ae91b4f2415e8439b2ad105e7488", "key": "243248d8de1ff8c7c587ee2057317523" }
-                    },
-                    "label": "0"
-                }
-            ]
-        }],
-        width: "100%",
-        height: "100vh",
-        aspectratio: "16:9",
+    .jwplayer {
+      position: absolute !important;
+    }
+
+    .jwplayer.jw-flag-aspect-mode {
+      min-height: 100%;
+      max-height: 100%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="jwplayerDiv"></div>
+  <script type="text/javascript">
+    function getQueryParams() {
+      const params = new URLSearchParams(window.location.search);
+      return {
+        file: params.get('file') || " https://mag03.tvx.prd.tv.odido.nl/wh7f454c46tw75168188_-627298088/PLTV/86/224/3221241590/3221241590.mpd?zoneoffset=0&devkbps=1-7000&servicetype=1&icpid=86&accounttype=1&limitflux=-1&limitdur=-1&tenantId=3103&accountinfo=%7E%7EV2.0%7EqbcsJh_jU5C9BcZc959e_wae44b4867b3417aa76b5db2da20fe46c%7EKZzTWjB8qD1zdgbJjRPVLJX-tV0qiN9RBHC_iseGrsmTSRjj06oGDtGlpSCRGOwF3626cf085c08d024c7e4aafc18c32440%7EExtInfo5Ro3VppWiUusj2ippqUPkQ%3D%3D4a2d2c8ce133f43026d0e31b822b8474%3A20240601012829%3AUTC%2C10001003329222%2C87.212.140.171%2C20240601012829%2C3103_SP1S%2C10001003329222%2C-1%2C0%2C1%2C%2C%2C2%2C3103_Sport1%2C%2C%2C2%2C10000044444303%2C0%2C10000025050255%2CNDEzODg2NTY3MzEwMzI2NzMwNjMwNTY%3D%2C%2C%2C5%2C1%2CEND&GuardEncType=2&RTS=1717205309&from=11&hms_devid=1008&online=1717205309&mag_hms=1008,311,305&_=1717205322621 ",
+        keyId: params.get('keyId') || "ef34ae91b4f2415e8439b2ad105e7488",
+        key: params.get('key') || "243248d8de1ff8c7c587ee2057317523"
+      };
+    }
+
+    document.addEventListener("DOMContentLoaded", function () {
+      const { file, keyId, key } = getQueryParams();
+
+      jwplayer("jwplayerDiv").setup({
+        file: file,
+        position: 'bottom',
         autostart: true,
-			 logo: {
- 					 file: '',
- 					 link: 'sportsnews.id/',
-  						position: 'top-right'
-  					},
-			cast:{},
-			sharing: {}
+        stretching: "",
+        width: "100%",
+        type: "dash",
+        drm: {
+          clearkey: {
+            keyId: keyId,
+            key: key
+          }
+        }
+      });
     });
-</script>
+  </script>
+</body>
+
+</html>
