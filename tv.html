@@ -1,0 +1,46 @@
+<style>
+    #tv {
+      width: 100%;
+      height: 100vh; /* Full screen height */
+    }
+  </style>
+
+  <!-- Div to hold the iframe -->
+  <div id="tv"></div>
+
+  <script>
+    // Function to load iframe with dynamic URL
+    function loadIframeByUrl(url) {
+      const iframeHtml = `<iframe src="${url}" allow="encrypted-media" scrolling="no" frameborder="0" height="100%" width="100%" gesture="media" allowfullscreen="allowfullscreen"></iframe>`;
+      
+      // Get the div where iframe will be loaded
+      const iframeContainer = document.getElementById("tv");
+      
+      // Inject the iframe into the div with id="tv"
+      iframeContainer.innerHTML = iframeHtml;
+    }
+
+    // Define a mapping for URL IDs
+    const predefinedUrls = {
+      "link1": "https://streaming.sportsnews.id/p/ziggosport.html",
+      "link2": "https://streaming.sportsnews.id/p/sportdigital.html?file=https://example.com/live/stream2.m3u8",
+      "link3": "https://streaming.sportsnews.id/p/sportdigital.html?file=https://example.com/live/gameStream.m3u8",
+      "link4": "https://streaming.sportsnews.id/p/sportdigital.html?file=https://example.com/live/musicStream.m3u8"
+    };
+
+    // Get the "id" parameter from the URL
+    const url = new URL(window.location.href);
+    const iframeId = url.searchParams.get("id"); // Retrieve the "id" parameter from the URL
+
+    // Check if the id is valid and exists in the predefinedUrls mapping
+    if (iframeId && predefinedUrls[iframeId]) {
+      const iframeUrl = predefinedUrls[iframeId]; // Get the corresponding stream URL
+      loadIframeByUrl(iframeUrl); // Load the iframe with the selected stream URL
+    } else {
+      // If the id is invalid or not provided, load a default iframe (optional)
+      const defaultUrl = predefinedUrls["link1"]; // Default stream URL
+      loadIframeByUrl(defaultUrl);
+    }
+  </script>
+</body>
+</html>
