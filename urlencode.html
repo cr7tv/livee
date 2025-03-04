@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>URL Encoder/Decoder</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+        textarea {
+            width: 80%;
+            height: 100px;
+            margin-bottom: 10px;
+        }
+        button {
+            margin: 5px;
+            padding: 10px;
+        }
+        #resultLink {
+            display: block;
+            margin-top: 10px;
+            font-size: 18px;
+            color: blue;
+            word-break: break-all;
+            visibility: hidden;
+        }
+    </style>
+</head>
+<body>
+    <h2>URL Encoder/Decoder</h2>
+    <textarea id="inputText" placeholder="Enter text or URL..."></textarea><br>
+    <button onclick="encodeURL()">Encode</button>
+    <button onclick="decodeURL()">Decode</button>
+    <h3>Result:</h3>
+    <textarea id="resultText" readonly></textarea>
+    <a id="resultLink" href="#" target="_blank"></a>
+
+    <script>
+        function encodeURL() {
+            let input = document.getElementById("inputText").value;
+            if (input.trim() === "") return;
+            let encoded = encodeURIComponent(input);
+            let resultURL = "https://www.yosintv.net/soco.html?file=" + encoded;
+            document.getElementById("resultText").value = resultURL;
+            document.getElementById("resultLink").href = resultURL;
+            document.getElementById("resultLink").textContent = resultURL;
+            document.getElementById("resultLink").style.visibility = "visible";
+        }
+
+        function decodeURL() {
+            let input = document.getElementById("inputText").value;
+            if (input.trim() === "") return;
+            let decoded = decodeURIComponent(input);
+            let resultURL = "https://www.yosintv.net/soco.html?file=" + decoded;
+            document.getElementById("resultText").value = resultURL;
+            document.getElementById("resultLink").href = resultURL;
+            document.getElementById("resultLink").textContent = resultURL;
+            document.getElementById("resultLink").style.visibility = "visible";
+        }
+    </script>
+</body>
+</html>
