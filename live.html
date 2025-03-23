@@ -32,11 +32,27 @@ body {
     text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
     z-index: 9999;
 }
+
+    #text {
+      position: fixed;
+      border: 0;
+      left: 0;
+      width: 100%;
+      color: #fff;
+      bottom: 50px;
+      text-align: center;
+      font-family: tahoma;
+      font-size: 20px;
+      z-index: 9999;
+    }
+    
 </style>
     
 </head>
 <body>
 <iframe id="player" loading="lazy" allowfullscreen></iframe>
+<div id="text">www.yosin-tv.net</div>
+
     
 <script>
 const channels = {
