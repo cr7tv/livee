@@ -1,62 +1,137 @@
+
 <!DOCTYPE html>
 <html lang="en">
+<head>
+
+<script language="JavaScript">var b = 'https://www.wicketgoal.com/';if (document.referrer.indexOf(b)!=-1){location.href='https://www.yosintv.link/';}</script>
+<script language="JavaScript">var b = 'https://nepsportshub.com/';if (document.referrer.indexOf(b)!=-1){location.href='https://www.yosintv.link/';}</script>
+
+ <script>
+  (function () {
+    const allowedReferrerDomain = "reducemyweight.net";
+    const currentURL = window.location.href;
+    const referrer = document.referrer;
+
+    if (!referrer.includes(allowedReferrerDomain) && currentURL === "https://yosintv3.github.io/") {
+      window.location.href = "https://www.yosintv.net/";
+    }
+  })();
+</script>
+
 
 
   
-<head>
-  <meta charset="UTF-8">
-  <title>YoSinTV MPD Player</title>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <script src="//content.jwplatform.com/libraries/SAHhwvZq.js"></script>
- <!-- https://yosintv2.github.io/tv/mpd.js -->
-  <style>
-    body {
-      margin: 0px;
-    }
-
-    .jwplayer {
-      position: absolute !important;
-    }
-
-    .jwplayer.jw-flag-aspect-mode {
-      min-height: 100%;
-      max-height: 100%;
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='https://web.cricfoot.net/favico.png' rel='icon' type='image/x-icon'/>
+<title>YoSinTV Live </title>
+<style>
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    font-family: Tahoma, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+#player {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+#text {
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+    
+</style>
+    
 </head>
-
 <body>
-  <div id="jwplayerDiv"></div>
-  <script type="text/javascript">
-    function getQueryParams() {
-      const params = new URLSearchParams(window.location.search);
-      return {
-        file: params.get('file') || " https://mag03.tvx.prd.tv.odido.nl/wh7f454c46tw75168188_-627298088/PLTV/86/224/3221241590/3221241590.mpd?zoneoffset=0&devkbps=1-7000&servicetype=1&icpid=86&accounttype=1&limitflux=-1&limitdur=-1&tenantId=3103&accountinfo=%7E%7EV2.0%7EqbcsJh_jU5C9BcZc959e_wae44b4867b3417aa76b5db2da20fe46c%7EKZzTWjB8qD1zdgbJjRPVLJX-tV0qiN9RBHC_iseGrsmTSRjj06oGDtGlpSCRGOwF3626cf085c08d024c7e4aafc18c32440%7EExtInfo5Ro3VppWiUusj2ippqUPkQ%3D%3D4a2d2c8ce133f43026d0e31b822b8474%3A20240601012829%3AUTC%2C10001003329222%2C87.212.140.171%2C20240601012829%2C3103_SP1S%2C10001003329222%2C-1%2C0%2C1%2C%2C%2C2%2C3103_Sport1%2C%2C%2C2%2C10000044444303%2C0%2C10000025050255%2CNDEzODg2NTY3MzEwMzI2NzMwNjMwNTY%3D%2C%2C%2C5%2C1%2CEND&GuardEncType=2&RTS=1717205309&from=11&hms_devid=1008&online=1717205309&mag_hms=1008,311,305&_=1717205322621 ",
-        keyId: params.get('keyId') || "ef34ae91b4f2415e8439b2ad105e7488",
-        key: params.get('key') || "243248d8de1ff8c7c587ee2057317523"
-      };
-    }
+<iframe id="player" loading="lazy" allowfullscreen></iframe>
 
-    document.addEventListener("DOMContentLoaded", function () {
-      const { file, keyId, key } = getQueryParams();
+    
+<script>
+const channels = {
 
-      jwplayer("jwplayerDiv").setup({
-        file: file,
-        position: 'bottom',
-        autostart: true,
-        stretching: "",
-        width: "100%",
-        type: "dash",
-        drm: {
-          clearkey: {
-            keyId: keyId,
-            key: key
-          }
-        }
-      });
-    });
-  </script>
+ppv: " https://www.yosintv.net/dmca.html?url=https://funn-g1163.huibo.tv/GE/H15/chunks.m3u8?p=46&cf=1742730440&d=&ip=126.115.249.216&e=1742931040&h=b154ffc49618f19574f12c0745520644 ",    // IPLPPV
+s11: " https://yosintv2.github.io/bkp/plyrr.html?url=https://customer-0agod1prlrzpzm4j.cloudflarestream.com/611fd4d3eb0a3f4238c34828bc5e9770/manifest/video.m3u8  ",    // IPLCloudflare
+tsports: " https://www.yosintv.net/dmca.html?url=https://funn-g1163.huibo.tv/GPA/H923/chunks.m3u8?p=48&cf=1742738596&d=&ip=126.115.249.216&e=1742799196&h=e1fb0c82b177f1d876ae0003deef4c25  ",    // IPL T20
+glive: " https://www.yosintv.net/dmca.html?url=https://funn-g1163.huibo.tv/GE/H15/chunks.m3u8?p=46&cf=1742738592&d=&ip=126.115.249.216&e=1742799196&h=3eaa7e334ab47a719cacc64d1194ded5  ",    // IPL T20
+bd: " https://www.glivestreaming.com/livetv/13/slivehub/slivehub/18702784/1738071071078-5986dc-c913-1317d-96cannie5-13625aa/3fba6bd41bef4d6c16b67fd6be89b6fb/126.115.249.216/1742721953?=&lang=en&017efd8d37e0ae3315be8052b76d9e20  ",    // IPL T20
+
+
+
+    
+sky1: " https://www.yosintv.net/1m.html?url=https://director.taihotel.asia/v3/director/VE1Y2JkNjQzNmEwYTFmLWZjOGEtZDRjNC0xY2Q5LWNjODQ5MDkx/master.m3u8 ",      // IPL T20
+sky3: " https://wikisport.cc/player/xgPlayer.html?url=https://jf5.dunyapurkaraja.com:999/hls/sky3nz.m3u8?md5=XGOAA0kJBlQFPM-081bCSQ&expires=1742629018 ",   // IPL T20
+sky3ii: " https://www.yosintv.net/1m.html?url=https://director.taihotel.asia/v4/variant/VE1gTdz0mLzRnLv52bt9SMhFjdtM3ajFmc09CNkhjYzYTNzQ2MyQWL1UzYh1iYhZDNtQmZyQWLjV2Y5IDO2E2L.m3u8 ",    // IPL T20
+
+
+
+
+
+
+
+    
+mutv: " https://yosintv2.github.io/bkp/plyrr.html?url=https://bcovlive-a.akamaihd.net/r2d2c4ca5bf57456fb1d16255c1a535c8/eu-west-1/eu-west-1/6058004203001/profile_2/chunklist.m3u8 ",   
+sports5: "https://www.yosintv.net/player3.html?url=https://rgelive.akamaized.net/hls/live/2043151/radiolive/playlist.m3u8",      
+laliga1: " https://wikisport.cc/player/xgPlayer.html?url=https://jf1.naqsheala.com:999/hls/hdchnl2.m3u8?md5=hLn5jsGOgsThn4CULJDktA&expires=1742201210 ",      
+
+
+    
+argentina: " https://www.yosintv.net/dmca.html?url=https://hls.uouetrq19.com/live/sd-6Mr9gDFQdfgWVxrVXm.m3u8?txSecret=6eee6f066c84a23dea476882d742fa7c&txTime=67DF47FD ",   
+france1: " https://www.yosintv.net/1m.html?url=https://director.taihotel.asia/v3/director/VE1MTU0ODNmZGFkZjY1LTE5ZGItNjZiNC03NDljLTgzNmExZGJi/master.m3u8",   
+spain1: " https://www.yosintv.net/1m.html?url=https://director.taihotel.asia/v3/director/VE1ZTcyYTM1MmUyYWU4LWUxOWItYzYwNC1lY2MzLWNjODI5MGE2/master.m3u8",  
+
+
+    
+ucl2: " https://www.yosintv.net/1m.html?url=https://director.taihotel.asia/v4/variant/VE1gTdz0mLzRnLv52bt9SMhFjdtM3ajFmc09yYyEjNkRmM2IjZjhTL0QmM40iZhRGNtI2N5QWLkNDNhVmZ5UzL.m3u8 ",   
+skyme: " https://wikisport.cc/player/xgPlayer.html?url=https://jf7.dunyapurkaraja.com:999/hls/mevent1.m3u8?md5=E0Qu2l4DpHTr1ctfKEO8Kg&expires=1741725203 ",   
+
+portugal: " https://www.yosintv.net/1m.html?url=https://director.taihotel.asia/v3/director/VE1ZjMwMDcxMjYzYTUxLTdiN2EtZDg5NC00OGM4LTc1NjI0MTg2/master.m3u8 ",   
+france: " https://www.yosintv.net/1m.html?url=https://director.taihotel.asia/v3/director/VE1MTU0ODNmZGFkZjY1LTE5ZGItNjZiNC03NDljLTgzNmExZGJi/master.m3u8",   
+spain: " https://www.yosintv.net/1m.html?url=https://director.taihotel.asia/v3/director/VE1ZTcyYTM1MmUyYWU4LWUxOWItYzYwNC1lY2MzLWNjODI5MGE2/master.m3u8",  
+
+tnt1: " https://wikisport.cc/player/xgPlayer.html?url=https://ns1.wikisport.cc/live/d7dbbb00.m3u8?token=uBubv4e7k5MAL1AYBoflIBEnUYU3vRks244Hybrl1ACV3sPoRtrYyKreKmK4JlB3lD7Q ",      
+tnt2: " https://wikisport.cc/player/xgPlayer.html?url=https://ns1.wikisport.cc/live/d7dbbb00.m3u8?token=uBubv4e7k5MAL1AYBoflIBEnUYU3vRks244Hybrl1ACc692c2PtO97kmR2zHywIkInW ",      
+tnt3: " https://wikisport.cc/player/xgplayer?key=G6RH_CEf6nT0VhWbELS7IFJX6XdzOhUNxSoLS0oJTeF_x7bzwOWqFFZGww8VlL2UnyShPxVXyhvCQPkP5rq4y9Qyoxo2UlyS6fJRTCaP7xOQg5Z1HKfyJ4rWAD1JEqUDVvgbYKLK0aWvGeudBA2pXk3cShM50DXK7b2b8zU1g_A= ",   
+    
+final: "https://yosintv2.github.io/bkp/plyrr.html?url=https://customer-7mzwznbptbg8bj9x.cloudflarestream.com/7f6d54a5c214e8b101164d5ec0430cc8/manifest/video.m3u8",      
+
+
+    
+starhindi: "https://yosintv.github.io/yosintv/jwplayers.html?src=https://mafiatv.live/watch.php?stream=STARSPORTS1 ",      
+s10: "https://www.yosintv.net/player1.html?url=https://customer-mjkjmlbjgn5ywfcu.cloudflarestream.com/742f41ecc4b27f4a4afad4b72bc85d0e/manifest/video.m3u8 ",      
+sky4: " https://wikisport.cc/player/xgPlayer.html?url=https://ns1.wikisport.cc/live/49a6f2bd.m3u8?token=CovsPoRtEkOxO32yvK6InxFXjrjkz8dXCBCg9IB3HbfTqkxwIkIg92TPdpOHeZpyJr9RVB0	 ",      
+v18: "https://yosintv2.github.io/bkp/plyrr.html?url=https://v18tataplaysyndication.akamaized.net/bpk-tv/Sports18_1_HD_voot_MOB/output03/hdntl=exp=1741591702~acl=%2f*~data=hdntl~hmac=4a62fdb483f3d28a3f341ce4fdc75831597ba3cd81b5b0deff094fb4734727a9/Sports18_1_HD_voot_MOB-audio_108038_eng=108000-video=3728000.m3u8"
+    
+};
+
+
+
+    
+const urlParams = new URLSearchParams(window.location.search);
+const channel = urlParams.get('id');
+function setChannel(channel) {
+const iframe = document.getElementById('player');
+iframe.src = channels[channel] || channels.tnt1;
+}
+setChannel(channel);
+</script>
+
+
+<div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;"><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
+<script type="text/javascript">sc_online_i(1707252,"ffffff","ffffff");</script><noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript></div>
+
+
+    
 </body>
-
 </html>
