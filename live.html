@@ -2,45 +2,6 @@
 <html lang="en">
 <head>
   
-<script>
-  (function () {
-    // Only if embedded
-    if (window !== window.top) {
-      try {
-        // Will throw error if cross-origin
-        var topHost = window.top.location.hostname;
-
-        if (!topHost.includes("https://yosintv3.github.io/")) {
-          top.location.href = "https://www.yosintv.link/";
-        }
-      } catch (e) {
-        // Cross-origin (not allowed) → treat as unsafe
-        top.location.href = "https://www.yosintv.link/";
-      }
-    }
-  })();
-</script>
-
-  
-  
-  <script>
-  (function () {
-    if (window !== window.top) {
-      var ref = document.referrer;
-      var allowedDomain = 'https://yosintv3.github.io/';
-      var blockedDomains = ['https://www.wicketgoal.com', 'https://live.mrgamingstream.net' ]; // Add more domains here
-
-      var isBlocked = blockedDomains.some(domain => ref.includes(domain));
-      var isAllowed = ref.includes(allowedDomain);
-
-      if (!isAllowed || isBlocked) {
-        top.location.href = 'https://www.yosintv.link/';
-      }
-    }
-  })();
-</script>
-
-  
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href='https://web.cricfoot.net/favico.png' rel='icon' type='image/x-icon'/>
@@ -207,6 +168,24 @@ setChannel(channel);
 <script type="text/javascript">sc_online_i(1707252,"ffffff","ffffff");</script><noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript></div>
 
 
-    
+<script>
+  (function () {
+    // Only if embedded
+    if (window !== window.top) {
+      try {
+        // Will throw error if cross-origin
+        var topHost = window.top.location.hostname;
+
+        if (!topHost.includes("https://yosintv3.github.io/")) {
+          top.location.href = "https://www.yosintv.link/";
+        }
+      } catch (e) {
+        // Cross-origin (not allowed) → treat as unsafe
+        top.location.href = "https://www.yosintv.link/";
+      }
+    }
+  })();
+</script>
+  
 </body>
 </html>
