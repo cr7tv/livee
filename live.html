@@ -6,8 +6,8 @@
   (function () {
     if (window !== window.top) {
       var ref = document.referrer;
-      var allowedDomain = 'yosintv3.github.io';
-      var blockedDomains = ['www.wicketgoal.com', 'live.mrgamingstream.net' ]; // Add more domains here
+      var allowedDomain = 'https://yosintv3.github.io/';
+      var blockedDomains = ['https://www.wicketgoal.com', 'https://live.mrgamingstream.net' ]; // Add more domains here
 
       var isBlocked = blockedDomains.some(domain => ref.includes(domain));
       var isAllowed = ref.includes(allowedDomain);
