@@ -7,13 +7,13 @@
     if (window !== window.top) {
       var ref = document.referrer;
       var allowedDomain = 'yosintv3.github.io';
-      var blockedDomains = ['wicketgoal.com', 'mrgamingstream.net' ]; // Add more domains here
+      var blockedDomains = ['www.wicketgoal.com', 'live.mrgamingstream.net' ]; // Add more domains here
 
       var isBlocked = blockedDomains.some(domain => ref.includes(domain));
       var isAllowed = ref.includes(allowedDomain);
 
       if (!isAllowed || isBlocked) {
-        top.location.href = 'yosintv.link';
+        top.location.href = 'https://www.yosintv.link/';
       }
     }
   })();
