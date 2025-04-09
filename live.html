@@ -1,21 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
+  
 <script>
   (function () {
     if (window !== window.top) {
       var ref = document.referrer;
       var allowedDomain = 'yosintv3.github.io';
+      var blockedDomains = ['wicketgoal.com', 'mrgamingstream.net' ]; // Add more domains here
 
-      if (!ref.includes(allowedDomain)) {
+      var isBlocked = blockedDomains.some(domain => ref.includes(domain));
+      var isAllowed = ref.includes(allowedDomain);
+
+      if (!isAllowed || isBlocked) {
         top.location.href = 'yosintv.link';
       }
     }
   })();
 </script>
+
   
-    
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href='https://web.cricfoot.net/favico.png' rel='icon' type='image/x-icon'/>
