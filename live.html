@@ -4,6 +4,27 @@
   
 <script>
   (function () {
+    // Only if embedded
+    if (window !== window.top) {
+      try {
+        // Will throw error if cross-origin
+        var topHost = window.top.location.hostname;
+
+        if (!topHost.includes("https://yosintv3.github.io/")) {
+          top.location.href = "https://www.yosintv.link/";
+        }
+      } catch (e) {
+        // Cross-origin (not allowed) → treat as unsafe
+        top.location.href = "https://www.yosintv.link/";
+      }
+    }
+  })();
+</script>
+
+  
+  
+  <script>
+  (function () {
     if (window !== window.top) {
       var ref = document.referrer;
       var allowedDomain = 'https://yosintv3.github.io/';
