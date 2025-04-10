@@ -1,137 +1,112 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en">
 <head>
-    <title>Prime Video - YoSinTV </title>
-    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/8/82/Telegram_logo.svg/2048px-Telegram_logo.svg.png" type="image/png" sizes="250x250">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/shaka-player.ui.min.js" crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/shaka-player/4.1.1/controls.min.css" crossorigin="anonymous">
-    <link rel="preload" href="https://a201aivottlinear-a.akamaihd.net/OTTB/pdx-nitro/live/clients/dash/enc/xko28jj0cp/out/v1/190f1d69a3d5467f8fb7d9df4339bc49/cenc.mpd" as="fetch" crossorigin="anonymous">
-
-    <style>
-        /* Overflow menu style */
-        .shaka-overflow-menu {
-            background-color: rgb(41, 41, 163);
-            color: rgb(153, 153, 153);
-        }
-
-        .shaka-overflow-menu button:hover {
-            background-color: rgb(45, 45, 45);
-        }
-
-        .shaka-overflow-button-label {
-            color: rgb(245, 245, 245);
-        }
-
-        .shaka-current-selection-span {
-            color: rgb(202, 202, 202);
-        }
-
-        .material-icons-round {
-            color: rgb(230, 230, 230);
-        }
-
-        /* Overflow sub menu style */
-        .shaka-settings-menu {
-            background-color: rgb(35, 35, 35);
-            color: rgb(255, 255, 255);
-        }
-
-        .shaka-settings-menu button {
-            color: rgb(255, 255, 255);
-        }
-
-        .shaka-settings-menu button:hover {
-            background-color: rgb(45, 45, 45);
-        }
-    </style>
-</head>
-
-<body bgcolor="black" style="margin:0">
-    <center>
-        <div data-shaka-player-container style="position:absolute;top:0;left:0;width:100%;height:100%;object-fit:cover">
-            <video autoplay muted playsinline data-shaka-player id="video"
-                   poster="https://www.disneystar.com/media/2231/7e25132017-009.jpg?width=1920&height=1080&mode=max&slimmage=true"
-                   style="width:100%;height:100%"></video>
-        </div>
-    </center>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0 , user-scalable=no">
+    <meta name="viewport" content="width=device-width" />
+    <!-- SEO-->
+    <meta name="author" content="T20HD Embed" />
+    <meta name="designer" content="T20 " />
+    <meta name="description" content="Watch Live Streaming T20. No signup required">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+    <link rel="stylesheet" href="https://cdn.plyr.io/3.6.2/plyr.css" />
+    <link rel="stylesheet" href="/dist/wmlogo.css" />
+    <script src="https://kit.fontawesome.com/bf2610f0a2.js" crossorigin="anonymous"></script>
+    <!-- Halfmoon CSS -->
+    <link href="https://cdn.jsdelivr.net/gh/halfmoonui/halfmoon@1.0.4/css/halfmoon.min.css" rel="stylesheet" />
+    <title>YoSinTV Plyr Player </title>
 
     <script>
-        async function init() {
-            let e = document.getElementById("video"),
-                r = e.ui,
-                n = r.getControls(),
-                o = n.getPlayer();
+        var encodeContent = true; // Set to true or false based on your requirement
+    </script>
 
-            // Faster startup and reduced buffering
-            o.configure({
-                drm: {
-                    clearKeys: {
-                        "7aa124253d518f18740c5bd932d581a3": "1819c82fc27225f5e79ae189ddece0ea"
-                    }
-                },
-                streaming: {
-                    startAtSegmentBoundary: true, // Start playback exactly at segment boundary
-                    ignoreTextStreamFailures: true, // Ignore subtitle loading issues
-                    rebufferingGoal: 1, // Lower rebufferingGoal for faster resume
-                    bufferingGoal: 3, // Lower bufferingGoal for faster start
-                    bufferBehind: 5, // Lower bufferBehind to free memory
-                    autoLowLatencyMode: true, // Enable auto low latency if available
-                    lowLatencyMode: true, // Enable low-latency streaming
-                    jumpLargeGaps: true, // Allow skipping over gaps in the stream
-                    inaccurateManifestTolerance: 0.3, // Faster manifest synchronization
-                    stallEnabled: false // Disable stall detection for faster start
-                },
-                manifest: {
-                    dash: {
-                        ignoreMinBufferTime: true, // Ignore minBufferTime in MPD for faster start
-                        autoCorrectDrift: true // Auto-correct time drift
-                    }
-                }
-            });
-
-            // UI configurations
-            r.configure({
-                controlPanelElements: ["play_pause", "mute", "volume", "spacer", "time_and_duration", "quality", "fullscreen", "overflow_menu"],
-                volumeBarColors: { base: 'rgba(63, 187, 1, 1)', level: 'rgb(255, 69, 0)' },
-                seekBarColors: { base: 'rgb(41, 41, 163)', buffered: 'rgb(35, 99, 3)', played: 'rgba(63, 187, 1, 1)' }
-            });
-
-            window.player = o;
-            window.ui = r;
-
-            o.addEventListener("error", onPlayerErrorEvent);
-            n.addEventListener("error", onUIErrorEvent);
-
-            // Load the video as quickly as possible
-            try {
-                await o.load("https://a201aivottlinear-a.akamaihd.net/OTTB/pdx-nitro/live/clients/dash/enc/xko28jj0cp/out/v1/190f1d69a3d5467f8fb7d9df4339bc49/cenc.mpd");
-                console.log("The video has now been loaded instantly!");
-            } catch (a) {
-                onPlayerError(a);
+    <script>
+        // Example function using the encode variable
+        function encodeLinks() {
+            if (encodeContent) {
+                // Logic to encode links
+                console.log('Links encoded.');
+            } else {
+                console.log('Links not encoded.');
             }
         }
 
-        function onPlayerErrorEvent(e) {
-            onPlayerError(e.detail);
-        }
-
-        function onPlayerError(e) {
-            console.error("Error code", e.code, "object", e);
-        }
-
-        function onUIErrorEvent(e) {
-            onPlayerError(e.detail);
-        }
-
-        function initFailed(e) {
-            console.error("Unable to load the UI library!");
-        }
-
-        document.addEventListener("shaka-ui-loaded", init);
-        document.addEventListener("shaka-ui-load-failed", initFailed);
+        // Call the function
+        encodeLinks();
     </script>
-</body>
 
+    <b:if cond='data:content == "false"' >
+    </b:if>
+    <script>
+        var encode = <data:content />;
+    </script>
+
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const e = document.querySelector("video"),
+                n = e.getElementsByTagName("source")[0].src,
+                o = {};
+            if(Hls.isSupported()) {
+                var config = {
+                    maxMaxBufferLength: 100,
+                };
+                const t = new Hls(config);
+                t.loadSource(n), t.on(Hls.Events.MANIFEST_PARSED, function(n, l) {
+                    const s = t.levels.map(e => e.height);
+                    o.quality = {
+                        default: s[0],
+                        options: s,
+                        forced: !0,
+                        onChange: e => (function(e) {
+                            window.hls.levels.forEach((n, o) => {
+                                n.height === e && (window.hls.currentLevel = o)
+                            })
+                        })(e)
+                    };
+                    new Plyr(e, o)
+                }), t.attachMedia(e), window.hls = t
+            } else {
+                new Plyr(e, o)
+            }
+        });
+    </script>
+
+    <script src="https://cdn.jsdelivr.net/npm/hls.js@latest"></script>
+    <script src="https://cdn.plyr.io/3.6.2/plyr.polyfilled.js"></script>
+</head>
+<body class="dark-mode with-custom-scrollbars with-custom-css-scrollbars">
+
+<video id="player" controls preload="metadata" poster="https://yosintv2.github.io/tv/yosintv.png" class="plyr">
+    <source id="videoSource" type="application/x-mpegURL"/>
+</video>
+
+<script>
+    // Function to get URL parameters
+    function getParameterByName(name, url) {
+        if (!url) url = window.location.href;
+        name = name.replace(/[\[\]]/g, "\\$&");
+        var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+            results = regex.exec(url);
+        if (!results) return null;
+        if (!results[2]) return '';
+        return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
+
+    // Get video URL parameter and set it as the video source
+    var videoUrl = getParameterByName('url');
+    if (videoUrl) {
+        // If URL is encoded, decode it
+        var decodedUrl = decodeURIComponent(videoUrl); 
+        document.getElementById('videoSource').setAttribute('src', decodedUrl);
+        document.getElementById('player').load();
+    }
+</script>
+
+<script>
+    document.addEventListener('DOMContentLoaded', () => {
+        const player = Plyr.setup('.js-player');
+    });
+</script>
+
+</body>
 </html>
