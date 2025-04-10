@@ -2,7 +2,19 @@
 <html lang="en">
 <head>
   
-<meta charset="UTF-8">
+<script>
+  (function () {
+    const allowedReferrerDomain = " cr7tv.github.io ";
+    const referrer = document.referrer;
+    
+    if (!referrer || !referrer.includes(allowedReferrerDomain)) {
+      window.location.href = "https://www.yosintv.link/";
+    }
+  })();
+</script>
+  
+  
+  <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href='https://web.cricfoot.net/favico.png' rel='icon' type='image/x-icon'/>
 <title>CR7TV: Free Live Stream </title>
