@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  
+  
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href='https://web.cricfoot.net/favico.png' rel='icon' type='image/x-icon'/>
+<title>CR7TV: Free Live Stream </title>
+<style>
+body {
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    color: #fff;
+    text-align: center;
+    overflow: hidden;
+    font-family: Tahoma, sans-serif;
+    -webkit-font-smoothing: antialiased;
+}
+#player {
+    width: 100%;
+    height: 100%;
+    border: none;
+}
+#text {
+    position: fixed;
+    bottom: 50px;
+    width: 100%;
+    font-size: 20px;
+    color: #fff;
+    text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+    z-index: 9999;
+}
+    
+</style>
+    
+</head>
+<body>
+<iframe id="player" loading="lazy" allowfullscreen></iframe>
+  
+<!--
+https://yosintv2.github.io/tv/soon.html
+-->
+    
+<script>
+const channels = {       
+soon:            " https://yosintv2.github.io/tv/soon.html ",   
+
+
+nepal1:         "  https://cr7tv.github.io/player/dmca.html?url=https://funn-g1163.huibo.tv/GPA/H900/chunks.m3u8?p=48&cf=1744248354&d=&ip=133.106.33.133&e=1749248954&h=1e3d8b5a28719484906bce1ea65e5f3e ",   
+nepal2:         "  https://cr7tv.github.io/player/dmca.html?url=https://funn-g1163.huibo.tv/GPA/H900/chunks.m3u8?p=48&cf=1744248354&d=&ip=133.106.33.133&e=1749248954&h=1e3d8b5a28719484906bce1ea65e5f3e ",   
+
+
+// https://yosintv2.github.io/bkp/plyrr.html?url=https://002.fclplayer.online/live/csstream1/playlist.m3u8?id=1001 
+
+// IPL Match
+ppv:       "  https://cr7tv.github.io/player/dmca.html?url=https://live-test.tsports.com/live-02/index.m3u8?hdnts=URLPrefix=aHR0cHM6Ly9saXZlLXRlc3QudHNwb3J0cy5jb20v~Expires=17436002443600~hmac=1fdfe8ddcbf56e3eefcb254f9facdca9e6fce112f92dcf335b77a9a930116421 ",    // IPLPPV
+tsports:   "  https://cr7tv.github.io/player/dmca.html?url=https://funn-g1163.huibo.tv/DGI/H2102/chunks.m3u8?p=49&cf=1744034481&d=&ip=104.28.251.60&e=1744935081&h=be27cf6bc189c291a08c7ad5cd54d88e  ",    // IPL T20
+glive:     "  https://cr7tv.github.io/player/dmca.html?url=https://funn-g1163.huibo.tv/GE/H15/chunks.m3u8?p=46&cf=1742997600&d=&ip=126.115.249.216&e=1749998200&h=b1ede91b7df9b6cdae13da19379abefb ",    // IPL T20
+t20cfd:     "  https://yosintv.github.io/yosintv/jwplayers.html?src=https://userv4537.ifrem.net/iframe/frame.php ",    // IPL T20
+skycric:     "  https://yosintv2.github.io/bkp/plyrr.html?url=https://wikihznew.newkso.ru/wikihz/wikicric1/mono.m3u8 ",    // IPL T20
+
+
+
+
+// April 10 - UCL Matches
+  
+vodafone:   " https://yosintv2.github.io/bkp/plyrr.html?url=https://windnew.newkso.ru/wind/premium260/mono.m3u8 ",   // PSG x Aston Villa
+tnt1:       " https://yosintv2.github.io/bkp/plyrr.html?url=https://wikihznew.newkso.ru/wikihz/wiki64/mono.m3u8 ",  // PSG x Aston Villa
+bein1:      " https://yosintv2.github.io/bkp/plyrr.html?url=https://top1-cdnnew.newkso.ru/top1-cdn/W0svhc8oj7/mono.m3u8  ",    // PSG x Aston Villa
+dazn2:      " https://yosintv2.github.io/bkp/plyrr.html?url=https://top1-cdnnew.newkso.ru/top1-cdn/O9lIKp2yHq/mono.m3u8 ",    // PSG x Aston Villa
+
+
+
+moviestar:         " https://yosintv2.github.io/bkp/plyrr.html?url=https://wikihznew.newkso.ru/wikihz/wiki68/mono.m3u8 ",   // Barcelona x Dortmund
+digisports:        " https://yosintv2.github.io/bkp/plyrr.html?url=https://top2new.newkso.ru/top2/premium400/mono.m3u8 ",  // Barcelona x Dortmund
+tnt2:              " https://yosintv2.github.io/bkp/plyrr.html?url=https://wikihznew.newkso.ru/wikihz/wiki28/mono.m3u8 ",  // Barcelona x Dortmund
+dazn1:             " https://yosintv2.github.io/bkp/plyrr.html?url=https://ddy6new.newkso.ru/ddy6/premium426/mono.m3u8 ",  // Barcelona x Dortmund
+tudn:             " https://yosintv2.github.io/bkp/plyrr.html?url=https://wikihznew.newkso.ru/wikihz/wikitudn/mono.m3u8 ",  // Barcelona x Dortmund | Inter Miami
+soccer1:             " https://yosintv2.github.io/bkp/plyrr.html?url=https://wikihznew.newkso.ru/wikihz/wikione/mono.m3u8 ",  // Inter Miami
+
+
+
+
+  
+
+
+// All Time Working Channels
+laligamplus:         " https://yosintv2.github.io/bkp/plyrr.html?url=https://top1-cdnnew.newkso.ru/top1-cdn/aA3nOJckvl/mono.m3u8  ",   
+usanetwork:         " https://yosintv2.github.io/bkp/plyrr.html?url=https://top1-cdnnew.newkso.ru/top1-cdn/SY3DkGmVQL/mono.m3u8  ",   
+
+
+    
+arsenal:         " https://cr7tv.github.io/player/dmca.html?url=https://funn-g1163.huibo.tv/GF/H4070/chunks.m3u8?p=48&cf=1743852651&d=&ip=126.115.249.216&e=1743953251&h=21c8c9bb7bdfdca6e02a6524b4233aca  ",   
+messi:         " https://cr7tv.github.io/player/dmca.html?url=https://funn-g1163.huibo.tv/DGI/H2115/chunks.m3u8?p=49&cf=1743981509&d=&ip=152.117.248.244&e=1749982109&h=43aa6d6854d41694dce7a287950f73c9  ",   
+messii:         " https://cr7tv.github.io/player/dmca.html?url=https://hls.uouetrq19.com/live/sd-6MtMPPYrFiHmof7XXm.m3u8?txSecret=acd95e69ab024ebfda5efcf033e5f493&txTime=67F45B4E  ",   
+
+
+    
+// Football Live
+_______: " https://cr7tv.github.io/player/dmca.html?url=_________ ",
+chelsea: " https://cr7tv.github.io/player/dmca.html?url=https://hls.uouetrq19.com/live/hd-en-6MsG9cenTjzoTfM9V9.m3u8?txSecret=af462c257e758d519d0846045a041099&txTime=67F3E1E5 ",
+
+
+    
+mancity: " https://cr7tv.github.io/player/dmca.html?url=https://hls.uouetrq19.com/live/hd-en-6MsG9cenTN1zks5yxB.m3u8?txSecret=b9876dbeb5cd83eb25b3f87bb30f3423&txTime=67F3F06C ",  
+mancityy: " https://yosintv2.github.io/bkp/plyrr.html?url=https://top1-cdnnew.newkso.ru/top1-cdn/W0svhc8oj7/mono.m3u8 ",  
+
+    
+    
+realmadriddd:          " https://cr7tv.github.io/player/dmca.html?url=https://funn-g1163.huibo.tv/DGI/H2119/chunks.m3u8?p=49&cf=1744138894&d=&ip=126.115.249.216&e=1744199494&h=6bf03769ea177f41ade75b2eb278668f ",   
+realmadridd:          " https://cr7tv.github.io/player/dmca.html?url=https://funn-g1163.huibo.tv/GE/H19/chunks.m3u8?p=46&cf=1744138812&d=&ip=126.115.249.216&e=1749139412&h=239248dd7fb58f469eb1ce60d438c1e8  ",   
+realmadrid:          " https://cr7tv.github.io/player/dmca.html?url=https://hls.uouetrq19.com/live/hd-en-6MuS7nFhoc3fCMsgwR.m3u8?txSecret=cd64fd82a4a1c1a28af9e4153e21ab96&txTime=67F6C4A3  ",   
+
+
+  
+barcelona:          " https://cr7tv.github.io/player/dmca.html?url=______ ",   
+barcelonaa:          " https://cr7tv.github.io/player/dmca.html?url=______ ",   
+  
+
+  
+liverpool: " https://cr7tv.github.io/player/dmca.html?url=https://hls.uouetrq19.com/live/hd-en-6MsG9cenTnCHL9B4e3.m3u8?txSecret=7e63c0cfbebc95b2704b8a3f685d87c6&txTime=67F3E1E5  ",  
+germanyy: " https://cr7tv.github.io/player/dmca.html?url=_________ ", 
+
+  
+
+portugal: " https://cr7tv.github.io/player/1m.html?url=https://director.taihotel.asia/v3/director/VE1OWMwMWIyNTQ3MmU0LTIyNDgtNzMxNC02NWY2LWU4MTA0ZmI5/master.m3u8 ",    // PPVland
+portugall: " https://cr7tv.github.io/player/dmca.html?url=_________ ",   
+
+
+  
+mancityppv: " https://cr7tv.github.io/player/dmca.html?url=https://hls.uouetrq19.com/live/hd-en-6MtJQdcUBHKPsgCAAB.m3u8?txSecret=4bfbcd40503c7548c06b53d1b18c752e&txTime=67EAB500 ",    // PPVland
+belgiumm: " https://cr7tv.github.io/player/dmca.html?url=_________ ",    
+
+
+
+////////////////////////////////////////////////////////////////////////////////////////
+  
+    
+sky1: " https://cr7tv.github.io/player/1m.html?url=https://director.taihotel.asia/v3/director/VE1Y2JkNjQzNmEwYTFmLWZjOGEtZDRjNC0xY2Q5LWNjODQ5MDkx/master.m3u8 ",      // IPL T20
+sky3: " https://wikisport.cc/player/xgPlayer.html?url=https://jf5.dunyapurkaraja.com:999/hls/sky3nz.m3u8?md5=XGOAA0kJBlQFPM-081bCSQ&expires=1742629018 ",   // IPL T20
+sky3ii: " https://cr7tv.github.io/player/1m.html?url=https://director.taihotel.asia/v4/variant/VE1gTdz0mLzRnLv52bt9SMhFjdtM3ajFmc09CNkhjYzYTNzQ2MyQWL1UzYh1iYhZDNtQmZyQWLjV2Y5IDO2E2L.m3u8 ",    // IPL T20
+
+
+
+
+mutv: " https://yosintv2.github.io/bkp/plyrr.html?url=https://bcovlive-a.akamaihd.net/r2d2c4ca5bf57456fb1d16255c1a535c8/eu-west-1/eu-west-1/6058004203001/profile_2/chunklist.m3u8 ",   
+sports5: "https://cr7tv.github.io/player/player3.html?url=https://rgelive.akamaized.net/hls/live/2043151/radiolive/playlist.m3u8",      
+laliga1: " https://wikisport.cc/player/xgPlayer.html?url=https://jf1.naqsheala.com:999/hls/hdchnl2.m3u8?md5=hLn5jsGOgsThn4CULJDktA&expires=1742201210 ",      
+
+
+s10: "https://cr7tv.github.io/player/player1.html?url=https://customer-mjkjmlbjgn5ywfcu.cloudflarestream.com/742f41ecc4b27f4a4afad4b72bc85d0e/manifest/video.m3u8 ",      
+sky4: " https://wikisport.cc/player/xgPlayer.html?url=https://ns1.wikisport.cc/live/49a6f2bd.m3u8?token=CovsPoRtEkOxO32yvK6InxFXjrjkz8dXCBCg9IB3HbfTqkxwIkIg92TPdpOHeZpyJr9RVB0	 ",      
+v18: "https://yosintv2.github.io/bkp/plyrr.html?url=https://v18tataplaysyndication.akamaized.net/bpk-tv/Sports18_1_HD_voot_MOB/output03/hdntl=exp=1741591702~acl=%2f*~data=hdntl~hmac=4a62fdb483f3d28a3f341ce4fdc75831597ba3cd81b5b0deff094fb4734727a9/Sports18_1_HD_voot_MOB-audio_108038_eng=108000-video=3728000.m3u8"
+
+  
+};
+
+
+
+    
+const urlParams = new URLSearchParams(window.location.search);
+const channel = urlParams.get('id');
+function setChannel(channel) {
+const iframe = document.getElementById('player');
+iframe.src = channels[channel] || channels.soon;
+}
+setChannel(channel);
+</script>
+
+
+<div style="position:fixed;top:0;left:0;width:100%;height:1px;overflow:hidden;visibility:hidden;z-index:9999;"><script type="text/javascript" src="//widget.supercounters.com/ssl/online_i.js"></script>
+<script type="text/javascript">sc_online_i(1707252,"ffffff","ffffff");</script><noscript><a href="https://www.supercounters.com/" style="visibility:hidden;">free online counter</a></noscript></div>
+
+  
+</body>
+</html>
