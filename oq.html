@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Daily Quiz Roadmap</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f4f4f4;
+      padding: 2rem;
+      max-width: 600px;
+      margin: auto;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+    }
+    .card {
+      background: white;
+      padding: 1.5rem;
+      border-radius: 8px;
+      margin-top: 1rem;
+    }
+    .category {
+      font-size: 1.4rem;
+      font-weight: bold;
+      margin-bottom: 0.5rem;
+    }
+    .subcategory {
+      font-size: 1.2rem;
+      color: #555;
+    }
+    .note {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #888;
+      text-align: center;
+    }
+  </style>
+</head>
+<body>
+  <h1>🗓️ Daily Quiz Builder</h1>
+  <div class="card" id="quizCard">
+    <div class="category">Loading...</div>
+    <div class="subcategory">Please wait...</div>
+  </div>
+  <p class="note">This updates every 24 hours. Stay consistent and build daily!</p>
+
+  <script>
+    const categories = [
+      {
+        name: "🧠 General Knowledge",
+        subcategories: ["World Capitals", "Famous Personalities", "Inventions & Discoveries", "Sports", "Geography", "Nature & Wildlife"]
+      },
+      {
+        name: "🔬 Science & Technology",
+        subcategories: ["Physics, Chemistry, Biology", "Astronomy & Space", "Modern Tech (AI, Robotics)", "Medical Science", "Inventions & Inventors"]
+      },
+      {
+        name: "➕ Math & Logic",
+        subcategories: ["Arithmetic, Algebra, Geometry", "Puzzles & Brain Teasers", "Logical Reasoning", "Data Interpretation", "Aptitude Tests"]
+      },
+      {
+        name: "🏛️ History & Politics",
+        subcategories: ["World History", "Indian History / American History (localized)", "Political Systems", "Revolutions, Wars & Treaties", "World Leaders"]
+      },
+      {
+        name: "🌐 World History",
+        subcategories: ["Ancient Civilizations", "Middle Ages & Empires", "Colonialism & Exploration", "20th Century Conflicts", "Global Movements"]
+      },
+      {
+        name: "🈹 Languages",
+        subcategories: ["Grammar & Vocabulary", "Synonyms & Antonyms", "Idioms & Phrases", "Reading Comprehension", "Spelling Bee"]
+      },
+      {
+        name: "🎬 Pop Culture & Entertainment",
+        subcategories: ["Movies & TV Shows", "Celebrities", "Music & Bands", "Gaming", "Internet Memes"]
+      },
+      {
+        name: "💻 Programming & Tech",
+        subcategories: ["Programming Languages (JS, Python, C++)", "Data Structures & Algorithms", "Web Development (HTML/CSS)", "Cybersecurity", "DevOps / Cloud / AI Basics"]
+      },
+      {
+        name: "👤 Personality Quizzes",
+        subcategories: ["Fun (What’s your spirit animal?)", "Professional (Work personality)", "Relationship", "Lifestyle & Habits", "Career Paths"]
+      },
+      {
+        name: "🗞️ Current Affairs",
+        subcategories: ["Daily/Weekly News", "Sports Events", "Economic & Business News", "International Relations", "Science & Environment"]
+      },
+      {
+        name: "📝 Competitive Exams",
+        subcategories: ["UPSC / SSC / Govt Exams (India)", "SAT / ACT / GRE (US)", "IELTS / TOEFL (English)", "CAT / GMAT (Business school)", "NEET / JEE (Medical/Engineering)"]
+      },
+      {
+        name: "🧘‍♂️ Health & Wellness",
+        subcategories: ["Nutrition & Diet", "Fitness & Exercise", "Mental Health Awareness", "Human Body Facts", "First Aid & Safety"]
+      },
+      {
+        name: "🌍 Travel & Culture",
+        subcategories: ["World Festivals", "Famous Landmarks", "Cuisines of the World", "Local Customs & Traditions", "Travel Tips & Safety"]
+      },
+      {
+        name: "🧩 Riddles & Fun Facts",
+        subcategories: ["Classic Riddles", "Mind-Blowing Facts", "Wordplay", "Optical Illusions", "True or False Trivia"]
+      },
+      {
+        name: "📈 Finance & Business",
+        subcategories: ["Personal Finance", "Startup & Entrepreneurship", "Business Terminologies", "Investing & Stock Market", "Economic Basics"]
+      },
+      {
+        name: "🧪 Weird & Unusual Knowledge",
+        subcategories: ["Strange Laws", "Odd World Records", "Rare Animals & Plants", "Bizarre Historical Facts", "Out-of-the-box Science"]
+      },
+      {
+        name: "🇳🇵 Nepali Lok Sewa",
+        subcategories: [
+          "Nepali Constitution & Laws", 
+          "Nepali History & Geography", 
+          "Public Administration", 
+          "Nepali Economy & Development", 
+          "Nepali Political System",
+          "Nepali Culture & Traditions",
+          "Nepal’s International Relations",
+          "Nepali Social Issues & Welfare",
+          "Environment & Natural Resources of Nepal",
+          "Nepali Literature & Language",
+          "Nepali Government Policies & Programs",
+          "Nepali Ethics & Governance",
+          "Geography of South Asia",
+          "Nepali Law & Legal System",
+          "Nepali Judicial System",
+          "Public Sector Reforms in Nepal",
+          "Science and Technology in Nepal",
+          "Nepali Agriculture & Rural Development",
+          "Nepali Development Planning",
+          "Disaster Management in Nepal"
+        ]
+      }
+    ];
+
+    function pickRandomCategory() {
+      const category = categories[Math.floor(Math.random() * categories.length)];
+      const sub = category.subcategories[Math.floor(Math.random() * category.subcategories.length)];
+      return { category: category.name, subcategory: sub };
+    }
+
+    function displayQuiz({ category, subcategory }) {
+      document.querySelector('.category').textContent = `📚 Category: ${category}`;
+      document.querySelector('.subcategory').textContent = `🔍 Focus: ${subcategory}`;
+    }
+
+    function checkAndSetDailyQuiz() {
+      const saved = JSON.parse(localStorage.getItem('dailyQuiz'));
+      const now = new Date();
+
+      if (saved && (now - new Date(saved.timestamp)) < 24 * 60 * 60 * 1000) {
+        // Within 24 hours
+        displayQuiz(saved.quiz);
+      } else {
+        const quiz = pickRandomCategory();
+        displayQuiz(quiz);
+        localStorage.setItem('dailyQuiz', JSON.stringify({ quiz, timestamp: now }));
+      }
+    }
+
+    checkAndSetDailyQuiz();
+  </script>
+</body>
+</html>
